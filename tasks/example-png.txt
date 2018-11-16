@@ -1,0 +1,10 @@
+subject1 example-data/png/a/
+subject2 example-data/png/b/
+subject3 example-data/png/a/
+subject4 example-data/png/b/
+subject5 example-data/png/a/
+subject6 example-data/png/b/
+subject7 example-data/png/a/
+subject8 example-data/png/b/
+subject9 example-data/png/a/
+subject10 example-data/png/b/

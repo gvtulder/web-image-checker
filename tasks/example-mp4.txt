@@ -1,0 +1,5 @@
+subject1 example-data/mp4/small.mp4
+subject2 example-data/mp4/small.mp4
+subject3 example-data/mp4/small.mp4
+subject4 example-data/mp4/small.mp4
+subject5 example-data/mp4/small.mp4

@@ -1,0 +1,5 @@
+subject1 example-data/nifti/little.nii.gz example-data/nifti/little-seg.nii.gz
+subject2 example-data/nifti/little.nii.gz example-data/nifti/little-seg.nii.gz
+subject3 example-data/nifti/little.nii.gz example-data/nifti/little-seg.nii.gz
+subject4 example-data/nifti/little.nii.gz example-data/nifti/little-seg.nii.gz
+subject5 example-data/nifti/little.nii.gz example-data/nifti/little-seg.nii.gz

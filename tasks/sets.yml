@@ -13,14 +13,15 @@
 #
 # Any additional parameters are available through the parameters field of the set object.
 #
-- set_id: static-3d
-  title: Static 3D segmentations
-  template: task-views/pompe-static-3d.erb
-  show_csv_link: false
-- set_id: static-3d-four
-  title: Compare four static 3D segmentations
-  template: task-views/index-html.erb
-- set_id: dynamic-3d-registration
-  title: 4D registration results
+- set_id: example-png
+  title: Example with PNG images in per-subject directories
+  template: task-views/all-images.erb
+- set_id: example-mp4
+  title: Example with MP4 video
   template: task-views/all-mp4s.erb
-  show_stable_id: true
+- set_id: example-nifti
+  title: Example with NIFTI viewer
+  template: task-views/all-nii-gzs.erb
+- set_id: example-nifti-seg
+  title: Example with NIFTI viewer with segmentation overlay
+  template: task-views/nii-gz-segmentation.erb
