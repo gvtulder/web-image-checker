@@ -1,0 +1,23 @@
+<div id="task-images">
+  <%
+  # shows the nii.gz image (first path) and the nii.gz segmentation overlay (second path)
+  img = url_for_file(current_task, File.basename(current_task.paths[0]), 0)
+  seg = url_for_file(current_task, File.basename(current_task.paths[1]), 1)
+  %>
+  <div style="max-width: 1024px"><div class="papaya" data-params="params"></div></div>
+  <script type="text/javascript">
+    var segmColorTable = function() {};
+    segmColorTable.prototype.lookupRed = function(screenVal, imageVal) { return (imageVal % 2 == 0 && imageVal > 0) ? 255 : 0; }
+    segmColorTable.prototype.lookupGreen = function(screenVal, imageVal) { return (imageVal % 2 == 1 && imageVal > 0) ? 255 : 0; }
+    segmColorTable.prototype.lookupBlue = function(screenVal, imageVal) { return (imageVal % 3 == 1 && imageVal > 2) ? 255 : 0; }
+
+    // initialize papaya viewer
+    var params = [];
+    params['smoothDisplay'] = false;
+    params['radiological'] = true;
+    params['images'] = ['<%= img %>',
+                        '<%= seg %>'];
+    params['<%= File.basename(img) %>'] = {'interpolation': false};
+    params['<%= File.basename(seg) %>'] = {'lut': new segmColorTable(), 'alpha': 0.3, 'min': 0, 'max': 10000, 'interpolation': false};
+  </script>
+</div>
