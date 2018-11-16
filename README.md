@@ -16,6 +16,8 @@ After configuration (see below), start the web server with
 ```
 rackup config.ru
 ```
+Open http://localhost:9292/ to view some of the examples.
+
 You can run the server with the ``rackup`` tool, but for improved performance and a more stable set-up, you might want to run it using [Nginx](https://nginx.org/) and the [Passenger module](https://www.phusionpassenger.com/).
 
 Key concepts
@@ -64,6 +66,7 @@ The ERB templates in `task-views/` define how the tasks are displayed. You speci
 * `task-views/all-images.erb` looks in the data path and renders all `.jpg` and `.png` images in the directory (or you can specify the path to the image directly);
 * `task-views/all-mp4s.erb` does something similar for `.mp4` videos;
 * `task-views/all-nii-gzs.erb` shows a Papaya viewer for all `.nii.gz` files in the directory;
+* `task-views/nii-gz-segmentation.erb` shows a viewer with a `.nii.gz` image (first path) and a segmentation overlay (second path);
 * `task-views/index-html.erb` looks for a file named `index.html` in the path and renders this (use relative `src` paths to show images in the same directory);
 
 Decision choices
