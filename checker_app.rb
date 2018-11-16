@@ -148,12 +148,14 @@ class CheckerApp < Sinatra::Base
     "Not found, sorry."
   end
 
-  use Rack::Auth::Basic do |username, password|
-    if File.exists? "config/auth.yml"
-      users = YAML.load(File.read("config/auth.yml"))
-      not users[username].nil? and users[username] == password
-    else
-      true
+  if File.exists? "config/auth.yml"
+    use Rack::Auth::Basic do |username, password|
+      if File.exists? "config/auth.yml"
+        users = YAML.load(File.read("config/auth.yml"))
+        not users[username].nil? and users[username] == password
+      else
+        true
+      end
     end
   end
 
