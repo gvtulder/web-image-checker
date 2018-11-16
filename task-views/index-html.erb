@@ -1,0 +1,16 @@
+<div id="task-images">
+  <%
+  # load the index.html file in each path for this task
+  # each index.html's contents will be shown in a new column
+  current_task.paths.each_with_index do |path, path_idx|
+    path = "#{path}/index.html" unless path =~ /\.html$/
+    if File.exists?(path)
+      fragment = File.read(path)
+      fragment = rewrite_src_attributes(fragment, current_task, path_idx)
+    else
+      fragment = "NOT FOUND"
+    end
+    %><div class="tab" style="width: <%= 95.0 / current_task.paths.size.to_f %>%"><p><%= fragment %></p></div><%
+  end
+  %>
+</div>

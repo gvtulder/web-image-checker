@@ -1,0 +1,240 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+
+
+
+body {
+  font-family: sans-serif;
+  line-height: 1.2;
+  background: #000;
+}
+
+.left-column{
+  border-right: 1px solid #aaa;
+  width: 290px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 15px;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background: #fff;
+}
+
+.left-column header {
+  margin: 0 -15px 10px -15px;
+  padding: 10px 15px;
+  font-size: 120%;
+  font-weight: bold;
+  background: #bbb;
+  color: #000;
+}
+
+.scoring {
+  margin-top: -15px;
+  margin-bottom: 30px;
+}
+.scoring textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+.scoring p, .scoring ul {
+  margin: 0 0 0.3em 0;
+}
+.scoring ul {
+  margin-bottom: 0.5em;
+}
+.scoring input[type=radio]:not(old) {
+  width: 2em;
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  opacity: 0;
+}
+.scoring input[type=radio]:not(old) + label {
+  display: inline-block;
+  margin-left: -2em;
+  line-height: 1.5em;
+  padding: 2px 8px 2px 8px;
+  background: #eee;
+  width: 100%;
+  box-sizing: border-box;
+}
+.scoring input[type=radio]:not(old) + label i {
+  padding-right: 5px;
+}
+.scoring input[type=radio]:not(old) + label i {
+  opacity: 0.3;
+}
+.scoring input[type=radio]:checked:not(old) + label {
+  background: #aaa;
+}
+.scoring input[type=radio]:checked:not(old) + label i {
+  opacity: 1.0;
+}
+/*
+.scoring input[type=radio]:checked:not(old)#f-decision-correct + label {
+  background: #8ee26f;
+}
+.scoring input[type=radio]:checked:not(old)#f-decision-needsfixing + label {
+  background: #e26f6f;
+}
+.scoring input[type=radio]:checked:not(old)#f-decision-undecided + label {
+  background: #e2e16f;
+}
+*/
+.scoring input[type=submit] {
+  padding: 5px 15px;
+}
+
+.task-list {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.task-list li {
+  display: inline-block;
+  margin: 1px;
+}
+.task-list li a {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  font-size: 70%;
+  box-sizing: border-box;
+  padding-top: 7px;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  background: #fff;
+}
+.task-list li.current a {
+  border: 2px solid #000;
+  padding-top: 5px;
+}
+/*
+.task-list li.correct a {
+  background: #8ee26f;
+}
+.task-list li.needsfixing a {
+  background: #e26f6f;
+  color: #fff;
+}
+.task-list li.undecided a {
+  background: #e2e16f;
+}
+*/
+.task-list li.with-comment a {
+  border-bottom: 2px solid #008;
+}
+.task-list li a:hover {
+  background: #aaa;
+}
+
+.task-utils{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 12px;
+}
+
+.current-task {
+  margin-left: 320px;
+  margin-top: 50px;
+  color: #ccc;
+}
+.current-task header {
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+}
+.current-task h2 {
+  font-size: 120%;
+  font-weight: bold;
+  margin-bottom: 0.3em;
+}
+.current-task header i.fa {
+  padding: 3px;
+  margin-left: 3px;
+  cursor: pointer;
+}
+.current-task p {
+  margin-bottom: 0.3em;
+}
+.current-task img {
+  padding: 0;
+}
+.current-task hr {
+  display: none;
+}
+.current-task .tab {
+  float: left;
+}
+.current-task .tab + .tab {
+  padding-left: 5px;
+  border-left: 1px solid #555;
+}
+
+.set-list {
+  margin: 20px;
+}
+.set-list ul li a {
+  background: #fff;
+  display: block;
+  width: 300px;
+  padding: 30px;
+  margin: 0 10px 10px 0;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+}
+.set-list ul li a:hover {
+  background: #aaa;
+}

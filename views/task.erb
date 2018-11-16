@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Checklist - <%=h set.id %></title>
+    <link rel="stylesheet" type="text/css" href="style.css?random=<%= rand %>">
+    <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <style type="text/css">
+    <% set.decision_choices.each do |choice| %>
+      .task-list li.<%= choice["code"] %> a,
+      .scoring input[type=radio]:checked:not(old)#f-decision-<%= choice["code"] %> + label {
+        background: <%= choice["color"] %>;
+      }
+    <% end %>
+    </style>
+    <link rel="stylesheet" type="text/css" href="papaya/papaya.css" />
+    <script type="text/javascript" src="papaya/papaya.js"></script>
+  </head>
+  <body>
+    <div class="left-column">
+      <% if current_task %>
+        <section class="scoring">
+          <header>
+            <h1>Current task: <%=h current_task.id %></h1>
+          </header>
+          <form method="post" action="update">
+            <p>
+              <label for="f-comment">Comments:</label><br>
+              <textarea name="comment" id="f-comment" rows="7"><%=h current_task.comment %></textarea>
+            </p>
+            <p class="decision-label">
+              <input type="hidden" name="set" value="<%=h set.id %>">
+              <input type="hidden" name="task" value="<%=h current_task.id %>">
+              Decision:
+            </p>
+            <ul class="decision-list">
+              <% set.decision_choices.each do |choice| %>
+                <li><input type="radio" name="decision" id="f-decision-<%=h choice["code"] %>" data-shortkey="<%= choice["shortkey"] %>" value="<%= choice["code"] %>"<% if current_task.decision == choice["code"] %> checked="checked"<% end %>><label for="f-decision-<%= choice["code"] %>"><i class="fa fa-<%= choice["icon"] %>"></i><%= choice["title"] %></label></li>
+              <% end %>
+            </ul>
+            <p>
+              <input type="submit" name="btn_save" value="Save">
+              <input type="submit" name="btn_save_next" id="f-btn-save-next" value="Save and Next">
+            </p>
+          </form>
+        </section>
+      <% end %>
+
+      <section class="task-list">
+        <header>
+          <h1>Tasks</h1>
+        </header>
+        <ul><%
+        set.each do |task|
+          css_classes = [task.decision]
+          css_classes << "current" if task == current_task
+          css_classes << "with-comment" if task.has_comment?
+          %><li class="<%= h css_classes.join(" ") %>"><a href="?task=<%= h task.id %>"><%= h task.id %></a></li><%
+        end.join
+          %></ul>
+      </section>
+
+      <% unless set.parameters["show_csv_link"] == false %>
+        <section class="task-utils">
+          <p><a href="<%=h "#{ set.id }.csv" %>">Download CSV</a></p>
+        </section>
+      <% end %>
+    </div>
+
+    <section class="current-task">
+      <% if current_task %>
+        <header>
+          <h2>
+            Sample <%= h current_task.id %>
+            <%= h("[#{ current_task.stable_id }]") if set.parameters["show_stable_id"] %>
+            <i id="zoom-minus-button" class="fa fa-search-minus"></i><i id="zoom-plus-button" class="fa fa-search-plus"></i>
+          </h2>
+        </header>
+        <%= ERB.new(File.read(set.template)).result(binding) if File.exists?(set.template) %>
+      <% end %>
+    </section>
+    <script type="text/javascript" src="zoom.js?random=<%= rand %>"></script>
+  </body>
+</html>

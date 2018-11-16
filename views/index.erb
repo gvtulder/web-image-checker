@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Checklist</title>
+    <link rel="stylesheet" type="text/css" href="style.css?random=<%= rand %>">
+    <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
+  </head>
+  <body class="set-list">
+    <ul>
+      <% sets.each do |set_id, set| %>
+        <li><a href="<%=h set.id %>"><%= set.title %></a></li>
+      <% end %>
+    </ul>
+  </body>
+</html>

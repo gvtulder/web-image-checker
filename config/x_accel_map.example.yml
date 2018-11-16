@@ -1,0 +1,23 @@
+---
+# List of filesystem to Nginx path mappings.
+#
+# Enable this to use X-Accel-Redirect headers to serve image files.
+# Specify the true filesystem path and the Nginx location.
+#
+# For example, if the Nginx configuration maps the URLs starting with
+# /mnt-bigr-cluster to the filesystem path /home/gijs/mnt-bigr-cluster:
+#
+#   location /mnt-bigr-cluster/ {
+#     internal;
+#     root /home/gijs;
+#   }
+#
+# add the following mapping to the list below:
+#
+#   /home/gijs/mnt-bigr-cluster/: /mnt-bigr-cluster/
+#
+# Files with a path starting with /home/gijs/mnt-bigr-cluster/ will then
+# be served through an X-Accel-Redirect header.
+#
+#
+/home/gijs/mnt-bigr-cluster/: /mnt-bigr-cluster/

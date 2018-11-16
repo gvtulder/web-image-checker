@@ -1,0 +1,18 @@
+<div id="task-images">
+  <%
+  # shows the mp4 videos for this task
+  current_task.paths.each_with_index do |path, path_idx|
+    if File.file?(path) and path =~ /\.mp4$/
+      %><video src="<%= url_for_file(current_task, File.basename(path), path_idx) %>" loop autoplay></video><%
+    elsif File.directory? path
+      Dir.entries(path).sort.each do |filename|
+        if filename =~ /\.mp4$/
+          %><video src="<%= url_for_file(current_task, filename, path_idx) %>" loop autoplay></video><%
+        end
+      end
+    else
+      "<p>Not found.</p>"
+    end
+  end
+  %>
+</div>

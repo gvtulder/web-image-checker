@@ -1,0 +1,18 @@
+<div id="task-images">
+  <%
+  # shows the png and jpeg images for this task
+  current_task.paths.each_with_index do |path, path_idx|
+    if File.file?(path) and path =~ /\.(png|jpg)$/
+      %><img src="<%= url_for_file(current_task, File.basename(path), path_idx) %>"><%
+    elsif File.directory? path
+      Dir.entries(path).sort.each do |filename|
+        if filename =~ /\.(png|jpg)$/
+          %><img src="<%= url_for_file(current_task, filename, path_idx) %>"><%
+        end
+      end
+    else
+      "<p>Not found.</p>"
+    end
+  end
+  %>
+</div>

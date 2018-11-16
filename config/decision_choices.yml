@@ -1,0 +1,27 @@
+---
+# List of option choices (see the task set's decision_choices parameter)
+#
+# Each option has the following parameters:
+# - code: a simple [a-z0-9]+ string
+# - icon: names refer to Font Awesome icons (see https://faicons.com/)
+# - shortkey: a single, lowercase letter
+# - title: can contain HTML code
+# - color: a CSS color
+#
+# default option set
+default:
+  - code: correct
+    icon: check-circle
+    title: <u>C</u>orrect
+    shortkey: c
+    color: "#8ee26f"  # green
+  - code: needsfixing
+    icon: times-circle
+    title: Needs <u>f</u>ixing
+    shortkey: f
+    color: "#e26f6f"  # red
+  - code: undecided
+    icon: question-circle
+    title: <u>U</u>ndecided
+    shortkey: u
+    color: "#e2e16f"  # yellow

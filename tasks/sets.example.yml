@@ -1,0 +1,26 @@
+---
+# Task set definitions.
+#
+# Each set has the following parameters:
+# - set_id: the set identifier used in paths and URLs (keep it simple, [-a-z0-9]+)
+# - title: title for the set list (may contain HTML)
+# - template: path to the ERB template used to render the task fragments
+#
+# Optional parameters:
+# - show_csv_link: set to false to hide the CSV download link (default: true)
+# - show_stable_id: set to true to show the stable task IDs (default: false)
+# - decision_choices: name of the decision type (see decision_choices.yml, default = default)
+#
+# Any additional parameters are available through the parameters field of the set object.
+#
+- set_id: static-3d
+  title: Static 3D segmentations
+  template: task-views/pompe-static-3d.erb
+  show_csv_link: false
+- set_id: static-3d-four
+  title: Compare four static 3D segmentations
+  template: task-views/index-html.erb
+- set_id: dynamic-3d-registration
+  title: 4D registration results
+  template: task-views/all-mp4s.erb
+  show_stable_id: true
