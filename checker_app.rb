@@ -117,7 +117,7 @@ class Task
 
   def save_to_file(type, contents)
     basedir = File.join("tasks", @set.id.to_s)
-    File.mkdir(basedir) unless File.exists? basedir
+    Dir.mkdir(basedir) unless File.exists? basedir
     File.open(File.join(basedir, "#{ type }-#{ @stable_id }.txt"), "w") do |f|
       f.puts contents
     end
@@ -216,10 +216,11 @@ class CheckerApp < Sinatra::Base
     # check which path we need
     path = task.paths[path_idx.to_i]
     path = File.dirname(path) if path =~ /\.html$/
+    path = File.expand_path(path)
 
     if File.file?(path) and File.basename(path) == filename
       # the path directly points to the file
-      abs_filename = File.expand_path(path)
+      abs_filename = path
     else
       # the path points to a directory,
       # clean up and resolve filename
