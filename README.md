@@ -3,6 +3,8 @@ Web-based image reviewing tool
 
 This is a crude web-based image reviewing tool that can be used to quickly review the results of (medical) image processing algorithms. It shows you a result (some images, a video) and lets you mark the result as correct or incorrect. It saves everything in text files.
 
+![](docs/images/screenshot-checklist.png?raw=true)
+
 Requirements
 ------------
 Ruby (e.g., version 2.5), RubyGems and a recent version of Sinatra:
