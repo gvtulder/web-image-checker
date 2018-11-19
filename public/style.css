@@ -168,6 +168,14 @@ body {
 .task-list ul li a:hover {
   background: #aaa;
 }
+.task-list.long li {
+  display: block;
+  margin: 0;
+}
+.task-list.long li a {
+  display: block;
+  width: 100%;
+}
 
 .task-utils {
   flex: none;

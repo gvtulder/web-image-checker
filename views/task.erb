@@ -46,7 +46,7 @@
         </section>
       <% end %>
 
-      <section class="task-list">
+      <section class="task-list <%= "long" if set.parameters["list_stable_id"] %>">
         <header>
           <h1>Tasks</h1>
         </header>
@@ -56,7 +56,8 @@
           css_classes = [task.decision]
           css_classes << "current" if task == current_task
           css_classes << "with-comment" if task.has_comment?
-          %><li <%= 'id="current-task-element"' if task == current_task %> class="<%= h css_classes.join(" ") %>"><a href="?task=<%= h task.id %>"><%= h task.id %></a></li><%
+          link_str = set.parameters["list_stable_id"] ? task.stable_id : task.id
+          %><li <%= 'id="current-task-element"' if task == current_task %> class="<%= h css_classes.join(" ") %>"><a href="?task=<%= h task.id %>"><%= h link_str %></a></li><%
         end.join
         %></ul>
         </div>

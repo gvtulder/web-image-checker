@@ -8,7 +8,8 @@
 #
 # Optional parameters:
 # - show_csv_link: set to false to hide the CSV download link (default: true)
-# - show_stable_id: set to true to show the stable task IDs (default: false)
+# - show_stable_id: set to true to show the stable task IDs on top of the page (default: false)
+# - list_stable_id: set to true to show the stable task IDs in the task list (default: false)
 # - decision_choices: name of the decision type (see decision_choices.yml, default = default)
 #
 # Any additional parameters are available through the parameters field of the set object.
