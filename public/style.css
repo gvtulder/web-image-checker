@@ -141,6 +141,7 @@ body {
 }
 .task-list ul {
   padding: 15px;
+  line-height: 0;
 }
 .task-list li {
   display: inline-block;
@@ -158,6 +159,7 @@ body {
   color: #000;
   background: #fff;
   overflow: hidden;
+  line-height: 1.2;
 }
 .task-list li.current a {
   border: 2px solid #000;
@@ -171,13 +173,11 @@ body {
 }
 .task-list.long ul {
   padding: 10px;
-  line-height: 0;
 }
 .task-list.long li a {
   width: 125px;
   height: 20px;
   padding-top: 3px;
-  line-height: 1.2;
 }
 .task-list.long li.current a {
   border: 2px solid #000;
