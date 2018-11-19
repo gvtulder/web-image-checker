@@ -50,19 +50,21 @@
         <header>
           <h1>Tasks</h1>
         </header>
+        <div class="task-list-container">
         <ul><%
         set.each do |task|
           css_classes = [task.decision]
           css_classes << "current" if task == current_task
           css_classes << "with-comment" if task.has_comment?
-          %><li class="<%= h css_classes.join(" ") %>"><a href="?task=<%= h task.id %>"><%= h task.id %></a></li><%
+          %><li <%= 'id="current-task-element"' if task == current_task %> class="<%= h css_classes.join(" ") %>"><a href="?task=<%= h task.id %>"><%= h task.id %></a></li><%
         end.join
-          %></ul>
+        %></ul>
+        </div>
       </section>
 
       <% unless set.parameters["show_csv_link"] == false %>
         <section class="task-utils">
-          <p><a href="<%=h "#{ set.id }.csv" %>">Download CSV</a></p>
+          <p><a href="<%=h "#{ set.id }.csv" %>"><i class="fa fa-table"></i> Download CSV</a></p>
         </section>
       <% end %>
     </div>
@@ -79,6 +81,7 @@
         <%= ERB.new(File.read(set.template)).result(binding) if File.exists?(set.template) %>
       <% end %>
     </section>
+
     <script type="text/javascript" src="zoom.js?random=<%= rand %>"></script>
   </body>
 </html>

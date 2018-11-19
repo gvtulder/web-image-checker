@@ -61,17 +61,17 @@ body {
   border-right: 1px solid #aaa;
   width: 290px;
   position: fixed;
+  display: flex;
+  flex-direction: column;
   left: 0;
   top: 0;
-  padding: 15px;
   height: 100%;
   box-sizing: border-box;
-  overflow-y: auto;
   background: #fff;
 }
 
 .left-column header {
-  margin: 0 -15px 10px -15px;
+  margin: 0 0 0.5em 0;
   padding: 10px 15px;
   font-size: 120%;
   font-weight: bold;
@@ -80,15 +80,15 @@ body {
 }
 
 .scoring {
-  margin-top: -15px;
-  margin-bottom: 30px;
+  flex: none;
+  margin-bottom: 20px;
 }
 .scoring textarea {
   width: 100%;
   box-sizing: border-box;
 }
 .scoring p, .scoring ul {
-  margin: 0 0 0.3em 0;
+  margin: 0.3em 15px 0.3em 15px;
 }
 .scoring ul {
   margin-bottom: 0.5em;
@@ -121,24 +121,26 @@ body {
 .scoring input[type=radio]:checked:not(old) + label i {
   opacity: 1.0;
 }
-/*
-.scoring input[type=radio]:checked:not(old)#f-decision-correct + label {
-  background: #8ee26f;
-}
-.scoring input[type=radio]:checked:not(old)#f-decision-needsfixing + label {
-  background: #e26f6f;
-}
-.scoring input[type=radio]:checked:not(old)#f-decision-undecided + label {
-  background: #e2e16f;
-}
-*/
 .scoring input[type=submit] {
   padding: 5px 15px;
 }
 
 .task-list {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.task-list header {
+  margin-bottom: 0;
+  flex: auto;
+}
+.task-list-container {
+  flex: auto;
+  overflow-y: auto;
+}
+.task-list ul {
+  padding: 15px;
 }
 .task-list li {
   display: inline-block;
@@ -160,29 +162,22 @@ body {
   border: 2px solid #000;
   padding-top: 5px;
 }
-/*
-.task-list li.correct a {
-  background: #8ee26f;
-}
-.task-list li.needsfixing a {
-  background: #e26f6f;
-  color: #fff;
-}
-.task-list li.undecided a {
-  background: #e2e16f;
-}
-*/
 .task-list li.with-comment a {
   border-bottom: 2px solid #008;
 }
-.task-list li a:hover {
+.task-list ul li a:hover {
   background: #aaa;
 }
 
-.task-utils{
-  margin-top: 30px;
-  margin-bottom: 30px;
+.task-utils {
+  flex: none;
+  padding: 15px;
+  background: #bbb;
   font-size: 12px;
+}
+.task-utils a {
+  color: #000;
+  text-decoration: none;
 }
 
 .current-task {

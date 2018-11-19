@@ -46,3 +46,10 @@ document.addEventListener('keyup', function(e) {
   }
 });
 
+(function() {
+  var currentTaskEl = document.getElementById('current-task-element');
+  if (currentTaskEl && currentTaskEl.scrollIntoView) {
+    currentTaskEl.scrollIntoView({block: 'center', inline: 'center'});
+  }
+})();
+
