@@ -157,6 +157,7 @@ body {
   text-decoration: none;
   color: #000;
   background: #fff;
+  overflow: hidden;
 }
 .task-list li.current a {
   border: 2px solid #000;
@@ -168,13 +169,19 @@ body {
 .task-list ul li a:hover {
   background: #aaa;
 }
-.task-list.long li {
-  display: block;
-  margin: 0;
+.task-list.long ul {
+  padding: 10px;
+  line-height: 0;
 }
 .task-list.long li a {
-  display: block;
-  width: 100%;
+  width: 125px;
+  height: 20px;
+  padding-top: 3px;
+  line-height: 1.2;
+}
+.task-list.long li.current a {
+  border: 2px solid #000;
+  padding-top: 1px;
 }
 
 .task-utils {
