@@ -27,46 +27,57 @@ class TaskSet
     @title = title
     @template = template
     @parameters = parameters
-    @tasks = []
-    File.readlines("tasks/#{ @id }.txt").each do |line|
-      stable_id, *paths = line.strip.split(" ")
-      @tasks << Task.new(self, @tasks.size + 1, stable_id, paths)
-    end
-    @decision_choices = YAML.load(File.read("config/decision_choices.yml"))[parameters["decision_choices"] || "default"]
+  end
+
+  def decision_choices
+    @decision_choices ||= YAML.load(File.read("config/decision_choices.yml"))[@parameters["decision_choices"] || "default"]
+  end
+
+  def tasks
+    @tasks ||= (
+      tasks = []
+      File.readlines("tasks/#{ @id }.txt").map do |line|
+        if line.strip != ""
+          stable_id, *paths = line.strip.split(" ")
+          tasks << Task.new(self, tasks.size + 1, stable_id, paths)
+        end
+      end
+      tasks
+    )
   end
 
   def get_task(position)
     # returns a task by position (first task = 1)
-    @tasks[position - 1]
+    tasks[position - 1]
   end
 
   def each(&block)
-    @tasks.each do |task|
+    tasks.each do |task|
       block.call task
     end
   end
 
   def size
-    @tasks.size
+    tasks.size
   end
 
   def first_task
     # returns the first task without a decision
     idx = 0
-    idx += 1 while idx < @tasks.size and not @tasks[idx].decision.nil?
-    @tasks[(idx < @tasks.size) ? idx : 0]
+    idx += 1 while idx < tasks.size and not tasks[idx].decision.nil?
+    tasks[(idx < tasks.size) ? idx : 0]
   end
 
   def next_task(task)
     # returns the next task after the given task without a decision
-    idx = task.id % @tasks.size
-    while idx != (task.id - 1) and not @tasks[idx].decision.nil?
-      idx = (idx + 1) % @tasks.size
+    idx = task.id % tasks.size
+    while idx != (task.id - 1) and not tasks[idx].decision.nil?
+      idx = (idx + 1) % tasks.size
     end
     if idx == (task.id - 1)
       nil
     else
-      @tasks[idx]
+      tasks[idx]
     end
   end
 end
