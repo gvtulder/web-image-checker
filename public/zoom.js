@@ -1,4 +1,5 @@
 
+// zoom buttons
 document.addEventListener('click', function(e) {
   if (e.target && e.target.id == 'zoom-plus-button') {
     var imgs = document.getElementById('task-images');
@@ -23,6 +24,7 @@ document.addEventListener('click', function(e) {
   }
 });
 
+// create a list of keyboard shortcuts
 var decisionsWithKeys = {};
 (function() {
   var decisions = document.getElementsByName('decision');
@@ -33,6 +35,7 @@ var decisionsWithKeys = {};
   }
 })();
 
+// process keyboard shortcuts
 document.addEventListener('keyup', function(e) {
   if (e.target && e.target.nodeName == 'TEXTAREA') return;
 
@@ -46,6 +49,7 @@ document.addEventListener('keyup', function(e) {
   }
 });
 
+// scroll task list to currently selected element
 (function() {
   var currentTaskEl = document.getElementById('current-task-element');
   if (currentTaskEl && currentTaskEl.scrollIntoView) {
